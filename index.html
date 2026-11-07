@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://ntfy.sh; manifest-src 'self' data:; worker-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#05060a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="PowerStats">
+<meta name="format-detection" content="telephone=no">
+<title>PowerStats</title>
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-180.png">
+<!-- the manifest link is added by app.js: in Safari it carries the key, so the Home Screen icon opens unlocked -->
+<!-- launch screens (the app's dark background) so the Home Screen icon doesn't flash white: iPhone 16/17 Pro, Pro Max, 15/16, Plus, 12-14, Air -->
+<link rel="apple-touch-startup-image" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="launch-1206x2622.png">
+<link rel="apple-touch-startup-image" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="launch-1320x2868.png">
+<link rel="apple-touch-startup-image" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="launch-1179x2556.png">
+<link rel="apple-touch-startup-image" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="launch-1290x2796.png">
+<link rel="apple-touch-startup-image" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="launch-1170x2532.png">
+<link rel="apple-touch-startup-image" media="(device-width: 420px) and (device-height: 912px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="launch-1260x2736.png">
+<link rel="stylesheet" href="core.css?v=d7da5af26d">
+<link rel="stylesheet" href="phone.css?v=56478fc3f0">
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<section class="lock" id="lock" hidden>
+  <form class="lock-card" id="lock-form" autocomplete="off">
+    <img class="lock-icon" src="icon-180.png" alt="">
+    <h1>PowerStats<span class="ver" data-version></span></h1>
+    <p>Your grades are locked. Type your code to open them on this phone.</p>
+    <div class="field">
+      <input id="code" type="password" inputmode="text" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="Code" aria-label="Code">
+      <button type="button" class="eye" id="eye">Show</button>
+    </div>
+    <label class="remember"><input type="checkbox" id="remember" checked> Remember on this phone</label>
+    <button class="go" id="go" type="submit">Unlock</button>
+    <p class="lock-msg" id="lock-msg" role="status"></p>
+    <p class="lock-tip" id="lock-tip" hidden>After it opens, tap Share → Add to Home Screen. With Remember on, the icon opens without the code.</p>
+  </form>
+</section>
+
+<div id="app" hidden>
+  <header class="top"><div class="top-in">
+    <button class="brand" data-act="top" aria-label="PowerStats, back to the top"><img src="icon-180.png" alt="">PowerStats<span class="ver" data-version></span></button>
+    <button class="fresh" id="fresh" data-act="fresh"><i></i><span id="fresh-t"></span></button>
+    <button class="ib" data-act="settings" aria-label="Settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
+  </div></header>
+  <div class="pz-wrap" id="paused" hidden></div>
+  <main id="view"></main>
+  <nav class="tabbar" aria-label="Sections"></nav>
+</div>
+<div id="layer"></div>
+<div id="toast" class="toast" hidden role="status"></div>
+<script src="version.js?v=a88e4cb92e"></script>
+<script src="engine.js?v=fe25b4f4ab"></script>
+<script src="core.js?v=98b0a28d85"></script>
+<script src="phone.js?v=666e5b7ba1"></script>
+<script src="app.js?v=015033db0b"></script>
+</body>
+</html>
