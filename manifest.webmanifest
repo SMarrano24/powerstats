@@ -1,0 +1,14 @@
+{
+  "name": "PowerStats",
+  "short_name": "PowerStats",
+  "description": "Sam's grades: every class, what-ifs and the path to 90%",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0c0f",
+  "theme_color": "#0b0c0f",
+  "icons": [
+    {"src": "icon-180.png", "sizes": "180x180", "type": "image/png"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}
