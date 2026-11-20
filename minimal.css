@@ -1,0 +1,59 @@
+/* PowerStats v8: the minimal look, loaded last on the phone and the Mac (Sam, 2026-11-08: "everything should be minimalist
+   simple like 11 labs" and "there are so many distractions when the mac app is open"). Near-black, white type, one gray,
+   hairline borders, white pill for the main button, no glow, no gradient, no drifting background, nothing blinking.
+   Colors stay only where they mean something: a class's color mark, and green/amber/red for how a grade is doing. */
+:root{
+  --bg:#0a0a0b;--ink:#f4f4f5;--ink2:#d4d4d8;--dim:#a1a1aa;--faint:#8a8a93;
+  --glass:#141417;--glass2:#1b1b1f;--glass3:#232328;
+  --line:#232327;--line2:#2f2f35;
+  --acc:#e4e4e7;--acc2:#d4d4d8;--accbg:rgba(255,255,255,.07);--accline:#52525b;
+  --card:#111114;--card2:#18181b;--card3:#1f1f23;
+  --mono:-apple-system,"SF Pro Text",BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+}
+html,body{background:var(--bg)!important}
+body{font-variant-numeric:tabular-nums}
+.aurora{display:none!important}
+
+/* surfaces: flat, one hairline */
+.card,.nb-card,.mk-card,.tm-more-i,.tm-coach,.tdy,.tlx,.tg,.tp-card,.nowc,.modal,.sheet{background:#111114!important;box-shadow:none!important}
+.card,.nb-card,.mk-card,.tm-more-i,.tm-coach,.nowc{border-color:var(--line)!important}
+.nowc{background:#131316!important}
+.modal{background:#121215!important}
+
+/* headings: solid white (no gradient lettering) */
+.hero h1,.ph h1,.g-say h1,.st-head h1,.scr-h h1{background:none!important;-webkit-text-fill-color:currentColor!important;color:#fff!important}
+.ring-n b{background:none!important;-webkit-text-fill-color:currentColor!important}
+
+/* small labels: plain gray words, no glowing dot */
+.eyebrow,.nowc .eyebrow,.g-say .eyebrow{font:500 13px var(--sans)!important;letter-spacing:0!important;text-transform:none!important;color:var(--dim)!important}
+.eyebrow i,.g-say .eyebrow i{display:none!important}
+.label,h2.label{font:600 13px var(--sans)!important;letter-spacing:0!important;text-transform:none!important;color:var(--dim)!important}
+
+/* buttons and chips: pills; the main one is white */
+.btn{border-radius:999px;background:transparent;border-color:var(--line2);box-shadow:none}
+.btn.pri,.btn.go{background:#fff!important;border-color:#fff!important;color:#0a0a0b!important;filter:none}
+.chip{background:transparent;border-color:var(--line2);color:var(--ink2)}
+.chip i,.chip.go i,.fresh i,.tm-dot{box-shadow:none!important}
+.chip.go i{background:var(--ink2)}
+.pill{background:transparent}
+.linkish{color:var(--ink)!important;text-decoration:underline;text-decoration-color:#52525b;text-underline-offset:3px}
+
+/* nothing blinks or drifts (the team still shows who is writing, just without motion) */
+.tm-pulse,.tr-typing .d1,.tr-typing .d2,.tr-typing .d3,.tr-table.meeting ellipse:first-child,.tr-chip.writing .tm-av::after,.td-node.live i{animation:none!important}
+.tm-pulse{box-shadow:none!important}
+
+/* the highlighted summary line in a plan: plain text */
+.tm-hl mark{background:none!important;color:var(--ink2)!important}
+
+/* v8.3: less decoration (Sam: "simplify everything"). Small things lose their boxes: a grade is a colored number,
+   a date is two words, a class is its emoji, a test says "Test" in gray. Cards are flat. */
+.score{width:auto!important;min-width:46px;height:auto!important;padding:0!important;border:0!important;background:none!important;justify-content:flex-start!important;align-items:baseline}
+.score b{font-size:17px}
+.when{background:none!important;border:0!important;box-shadow:none!important}
+.tcard,.tcard.soon{background:#111114!important;border-color:var(--line)!important}
+.tc-when{background:none!important}
+.tcard.soon .tc-when b{color:var(--ink)!important}
+.tag,.tag.test{padding:0!important;background:none!important;color:var(--dim)!important;font:600 12px var(--sans)!important;letter-spacing:0!important;text-transform:none!important}
+.emo,.crow .c1 .emo,.gd-e,.mk-emo,.nb-emoji{background:none!important;box-shadow:none!important;border:0!important}
+.gd-n small{display:none}
+.mk-st{background:none!important;padding:0!important}
